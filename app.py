@@ -37,6 +37,7 @@ def save_signature(base64_str, emp_name, frm_name):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads', emp_name)
     file_name = '{}_{}.png'.format(path, frm_name)
     image = base64.b64decode(base64_str.split(',')[1])
+    print(image)
     with open(file_name, 'wb') as f:
         f.write(image)
         f.close()
@@ -104,7 +105,7 @@ def save_data():
     db.session.commit()
     utils.send_link_as_mail(
         emp_name=emp_name,
-        # emp_email=emp_email,
+        # emp_email=emp_email
         rev_email=rev_email,
         reviewer_code=reviewer_code,
         emp_code=emp_code,
@@ -165,7 +166,7 @@ def save_managerdata():
 
     rev_email1 = request.form.get('rev_email1')
 
-    signature = save_signature(request.form.get('signature'), request.form.get('reviewer_name1'), 'signature')
+    signature = save_signature(request.form.get('signature'), 'reviewer_name1', 'signature')
 
     manager_form = Manager(
 
