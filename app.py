@@ -37,6 +37,7 @@ def save_signature(base64_str, emp_name, frm_name):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads', emp_name)
     file_name = '{}_{}.png'.format(path, frm_name)
     image = base64.b64decode(base64_str.split(',')[1])
+
     print(image)
     with open(file_name, 'wb') as f:
         f.write(image)

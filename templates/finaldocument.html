@@ -356,6 +356,34 @@
 
 
         </tr>
+
+
+
+    </table>
+</div>
+
+    <input type="hidden" id="signature1" name="signature1">
+    <div class="signature_area">
+    <table cellspacing="3" cellpadding="3">
+
+
+         <tr>
+            <td>Reviewer Signature  :</td>
+            <td style="background:#faebd7;">
+                <div id="canvas">
+                    Canvas is not supported.
+                </div>
+                <script>
+				zkSignature.capture();
+
+                </script>
+            </td>
+            <td>
+            <button name="button" type="button" onclick="zkSignature.clear()">Clear</button>
+            </td>
+
+
+        </tr>
     </table>
 </div>
 
@@ -401,6 +429,8 @@
             }
         }
         function save(){
+
+
 
 			var emp_code1 = document.querySelector('[name=emp_code1]').value;
             var reviewer_name1 = document.querySelector('[name=reviewer_name1]').value;

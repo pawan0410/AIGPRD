@@ -7,8 +7,6 @@
 
     <script src="/static/signature.js"></script>
 
-
-
     <style>
         body{
             line-height: 1.5em;
@@ -159,7 +157,6 @@
             <td><input type="text" name="total_score1" id="total_score1"></td>
             <td><input type="text" name="achieved_score1" id="achieved_score1"></td>
 
-
         </tr>
 
         </tbody>
@@ -251,6 +248,7 @@
 
         </thead>
         <tbody>
+
         <tr>
 
             <td>{{the_document.self_assessment4_comment4}}</td>
@@ -336,8 +334,6 @@
     </div>
 
 
-
-    <input type="hidden" id="signature" name="signature">
     <div class="signature_area">
     <table cellspacing="3" cellpadding="3">
 
@@ -361,7 +357,6 @@
         </tr>
     </table>
 </div>
-
 
 
 <div class="footer_button">
@@ -405,6 +400,9 @@
         }
         function save(){
 
+            var canvas = document.getElementById("newSignature");
+			var signature = canvas.toDataURL("image/png");
+
 			var emp_code1 = document.querySelector('[name=emp_code1]').value;
             var reviewer_name1 = document.querySelector('[name=reviewer_name1]').value;
 			var reviewer_code1 = document.querySelector('[name=reviewer_code1]').value;
@@ -440,6 +438,14 @@
             achieved_score6 = document.querySelector('[name=achieved_score6]').value;
 
             rev_email1 = document.querySelector('[name=rev_email1]').value;
+
+            document.getElementById('signature').value = signature;
+
+			if ( zkSignature.isEmpty()
+			 ){
+			        alert('Please sign all the fields');
+			       return false;
+			};
 
 
 
