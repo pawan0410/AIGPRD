@@ -36,6 +36,8 @@ class Employee(db.Model):
 
     rev_email = db.Column(db.String(255))
 
+    signaturepath1 = db.Column(db.String(255))
+
     IP_addr = db.Column(db.String(255))
     Location = db.Column(db.String(255))
     UserAgent = db.Column(db.String(255))

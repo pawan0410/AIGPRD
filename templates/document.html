@@ -28,7 +28,7 @@
 
 </head>
 <body onload="getLocation()">
-<form method="post" action="/manager" id="frm1">
+<form method="post" action="/manager" id="frm">
     <input type="hidden" id="location" name="location">
 
 
@@ -287,7 +287,7 @@
             <td>{{the_document.self_assessment5_comment5}}</td>
             <td>{{the_document.self_assessment5}}</td>
             <td><input type="text" name="manager_assessment5" id="manager_assessment5"></td>
-            <td><input type="text" name="manager_assessment5_comment1" id="manager_assessment5_comment5"></td>
+            <td><input type="text" name="manager_assessment5_comment5" id="manager_assessment5_comment5"></td>
             <td><input type="text" name="total_score5" id="total_score5"></td>
             <td><input type="text" name="achieved_score5" id="achieved_score5"></td>
 
@@ -348,6 +348,7 @@
 				zkSignature.capture();
 
                 </script>
+		<input type="hidden" name="signature" id="signature" />
             </td>
             <td>
             <button name="button" type="button" onclick="zkSignature.clear()">Clear</button>

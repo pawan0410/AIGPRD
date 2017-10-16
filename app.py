@@ -118,6 +118,9 @@ def save_data():
 def success():
     return render_template('thankyou.html')
 
+
+
+
 @app.route("/document/<string:emp_code>/<string:reviewer_code>")
 def document(emp_code,reviewer_code):
     the_document = Employee.query.filter(Employee.emp_code == emp_code,Employee.reviewer_code==reviewer_code).order_by("id desc").first()
@@ -228,6 +231,28 @@ def save_managerdata():
 
 @app.route("/final_form/<string:emp_code1>/<string:reviewer_code1>")
 def final_document(emp_code1,reviewer_code1):
+    the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,Manager.reviewer_code1==reviewer_code1).order_by("id desc").first()
+    the_document = Employee.query.filter(Employee.emp_code == emp_code1,Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    #return str(BASE_DIR)
+
+    return render_template('finaldocument.html', the_document=the_document,the_final_document=the_final_document, base_dir=BASE_DIR)
+
+@app.route("/final/<string:emp_code1>/<string:reviewer_code1>",methods=['POST'])
+def save_finaldata(emp_code,reviewer_code):
+    the_document = Employee.query.filter(Employee.emp_code == emp_code,Employee.reviewer_code == reviewer_code).order_by("id desc").first
+    emp_name = the_document.emp_name
+    signature1 = save_signature(request.form.get('signature1'), emp_name, 'signature1')
+
+
+    db.session.execute("""
+                UPDATE Employee SET signaturepath1= signature1 WHERE the_document.emp_code= emp_code
+                """,{'signature1': signature1})
+    db.session.commit()
+
+@app.route("/final/<string:emp_code1>/<string:reviewer_code1>")
+def final(emp_code1,reviewer_code1):
     the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,Manager.reviewer_code1==reviewer_code1).order_by("id desc").first()
     the_document = Employee.query.filter(Employee.emp_code == emp_code1,Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
 

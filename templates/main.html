@@ -52,7 +52,7 @@
         <tr>
          <td>Employee Email :</td>
             <td>
-                <input type="text" name="emp_mail" id="emp_mail">
+                <input type="text" name="emp_email" id="emp_email">
             </td>
         </tr>
 
@@ -384,7 +384,6 @@
 			var date = document.querySelector('[name=date]').value;
             job_function = document.querySelector('[name=job_function]').value;
 			var emp_email = document.querySelector('[name=emp_email]').value;
-			var reviewer_email = document.querySelector('[name=reviewer_email]').value;
 
 			var emp_name = document.querySelector('[name=emp_name]').value;
 			var emp_code = document.querySelector('[name=emp_code]').value;
@@ -414,7 +413,7 @@
 
 
 			if ( (date == '') ||
-			  (job_function == '') || (emp_email == '')||(reviewer_email == '') ||(emp_code == '') ||(reviewer_code == '')
+			  (job_function == '') || (emp_email == '')||(emp_code == '') ||(reviewer_code == '')
 			 || (emp_name == '') || (reviewer_name == '') || (self_assessment1 == '') || (self_assessment2 == '') || (self_assessment3 == '')
 			 || (self_assessment4 == '') || (self_assessment5 == '') || (self_assessment6 == '') || (self_assessment1_comment1 == '')
 			 || (self_assessment2_comment2 == '')
