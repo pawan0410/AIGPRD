@@ -30,7 +30,8 @@
 
 </head>
 <body onload="getLocation()">
-<form method="post" action="/final" id="frm2">
+<form method="post" action="/save_final" id="frm2">
+    <input type="hidden" name="reviewer_code1" id="reviewer_code1" value=" {{the_final_document.reviewer_code1}}">
     <input type="hidden" id="location" name="location">
 
 
@@ -344,8 +345,8 @@
 
 
 
-    <input type="hidden" id="signature" name="signature">
-    <div class="signature_area">
+
+
     <table cellspacing="3" cellpadding="3">
 
 
@@ -360,7 +361,6 @@
 
 
     </table>
-</div>
 
     <input type="hidden" id="signature1" name="signature1">
     <div class="signature_area">
@@ -370,7 +370,7 @@
          <tr>
             <td>Reviewer Signature  :</td>
             <td style="background:#faebd7;">
-                <div id="canvas1">
+                <div id="canvas">
                     Canvas is not supported.
                 </div>
                 <script>
@@ -430,8 +430,8 @@
         }
         function save(){
 
-            var canvas1 = document.getElementById("newSignature1");
-			var signature1 = canvas.toDataURL("image/png");
+            var canvas1 = document.getElementById("newSignature");
+			var signature1 = canvas1.toDataURL("image/png");
 
 
 

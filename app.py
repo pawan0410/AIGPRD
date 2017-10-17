@@ -33,6 +33,7 @@ mail.init_app(app)
 with app.app_context():
     db.create_all()
 
+
 def save_signature(base64_str, emp_name, frm_name):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads', emp_name)
     file_name = '{}_{}.png'.format(path, frm_name)
@@ -44,15 +45,17 @@ def save_signature(base64_str, emp_name, frm_name):
         f.close()
     return file_name
 
+
 @app.route("/")
 def main():
     return render_template('main.html')
 
-@app.route("/employee" , methods=['POST'])
+
+@app.route("/employee", methods=['POST'])
 def save_data():
     emp_name = request.form.get('emp_name')
     emp_code = request.form.get('emp_code')
-    emp_email= request.form.get('emp_email')
+    emp_email = request.form.get('emp_email')
     job_function = request.form.get('job_function')
     date = request.form.get('date')
     reviewer_name = request.form.get('reviewer_name')
@@ -70,7 +73,6 @@ def save_data():
     self_assessment6 = request.form.get('self_assessment6')
     self_assessment6_comment6 = request.form.get('self_assessment6_comment6')
     rev_email = request.form.get('rev_email')
-
 
     employee_form = Employee(
         emp_code=emp_code,
@@ -92,7 +94,7 @@ def save_data():
         self_assessment5_comment5=self_assessment5_comment5,
         self_assessment6=self_assessment6,
         self_assessment6_comment6=self_assessment6_comment6,
-        rev_email = rev_email,
+        rev_email=rev_email,
 
         IP_addr=request.remote_addr,
         Location=request.form.get('location'),
@@ -114,26 +116,25 @@ def save_data():
     )
     return redirect('/success')
 
+
 @app.route("/success")
 def success():
     return render_template('thankyou.html')
 
 
-
-
 @app.route("/document/<string:emp_code>/<string:reviewer_code>")
-def document(emp_code,reviewer_code):
-    the_document = Employee.query.filter(Employee.emp_code == emp_code,Employee.reviewer_code==reviewer_code).order_by("id desc").first()
+def document(emp_code, reviewer_code):
+    the_document = Employee.query.filter(Employee.emp_code == emp_code,
+                                         Employee.reviewer_code == reviewer_code).order_by("id desc").first()
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    #return str(BASE_DIR)
+    # return str(BASE_DIR)
 
     return render_template('document.html', the_document=the_document, base_dir=BASE_DIR)
 
 
-@app.route("/manager",methods=['POST'])
+@app.route("/manager", methods=['POST'])
 def save_managerdata():
-
     emp_code1 = request.form.get('emp_code1')
     reviewer_name1 = request.form.get('reviewer_name1')
     reviewer_code1 = request.form.get('reviewer_code1')
@@ -174,13 +175,13 @@ def save_managerdata():
 
     manager_form = Manager(
 
-        emp_code1 = emp_code1,
-        reviewer_name1 = reviewer_name1,
-        reviewer_code1 = reviewer_code1,
-        manager_assessment1 = manager_assessment1,
-        manager_assessment1_comment1 = manager_assessment1_comment1,
-        total_score1 = total_score1,
-        achieved_score1 = achieved_score1,
+        emp_code1=emp_code1,
+        reviewer_name1=reviewer_name1,
+        reviewer_code1=reviewer_code1,
+        manager_assessment1=manager_assessment1,
+        manager_assessment1_comment1=manager_assessment1_comment1,
+        total_score1=total_score1,
+        achieved_score1=achieved_score1,
 
         manager_assessment2=manager_assessment2,
         manager_assessment2_comment2=manager_assessment2_comment2,
@@ -217,7 +218,6 @@ def save_managerdata():
 
     )
 
-
     db.session.add(manager_form)
     db.session.commit()
     utils.send_manager_link_as_mail(
@@ -229,34 +229,76 @@ def save_managerdata():
     )
     return redirect('/success')
 
+
 @app.route("/final_form/<string:emp_code1>/<string:reviewer_code1>")
-def final_document(emp_code1,reviewer_code1):
-    the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,Manager.reviewer_code1==reviewer_code1).order_by("id desc").first()
-    the_document = Employee.query.filter(Employee.emp_code == emp_code1,Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
+def final_document(emp_code1, reviewer_code1):
+    the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,
+                                              Manager.reviewer_code1 == reviewer_code1).order_by("id desc").first()
+    the_document = Employee.query.filter(Employee.emp_code == emp_code1,
+                                         Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    #return str(BASE_DIR)
+    # return str(BASE_DIR)
 
-    return render_template('finaldocument.html', the_document=the_document,the_final_document=the_final_document, base_dir=BASE_DIR)
-
-@app.route("/final/<string:emp_code1>/<string:reviewer_code1>",methods=['POST'])
-def save_finaldata(emp_code,reviewer_code):
-    the_document = Employee.query.filter(Employee.emp_code == emp_code,Employee.reviewer_code == reviewer_code).order_by("id desc").first
-    emp_name = the_document.emp_name
-    signature1 = save_signature(request.form.get('signature1'), emp_name, 'signature1')
+    return render_template('finaldocument.html', the_document=the_document, the_final_document=the_final_document,
+                           base_dir=BASE_DIR)
 
 
-    db.session.execute("""
-                UPDATE Employee SET signaturepath1= signature1 WHERE the_document.emp_code= emp_code
-                """,{'signature1': signature1})
-    db.session.commit()
+# @app.route("/final/<string:emp_code1>/<string:reviewer_code1>",methods=['POST'])
+# def save_finaldata(emp_code,reviewer_code):
+#    the_document = Employee.query.filter(Employee.emp_code == emp_code,Employee.reviewer_code == reviewer_code).order_by("id desc").first
+#    emp_name = the_document.emp_name
+#    signature1 = save_signature(request.form.get('signature1'), emp_name, 'signature1')
+#
+#
+#    db.session.execute("""
+#                UPDATE Employee SET signaturepath1= signature1 WHERE the_document.emp_code= emp_code
+#                """,{'signature1': signature1})
+#    db.session.commit()
 
 @app.route("/final/<string:emp_code1>/<string:reviewer_code1>")
-def final(emp_code1,reviewer_code1):
-    the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,Manager.reviewer_code1==reviewer_code1).order_by("id desc").first()
-    the_document = Employee.query.filter(Employee.emp_code == emp_code1,Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
+def final(emp_code1, reviewer_code1):
+    the_final_document = Manager.query.filter(Manager.emp_code1 == emp_code1,
+                                              Manager.reviewer_code1 == reviewer_code1).order_by("id desc").first()
+    the_document = Employee.query.filter(Employee.emp_code == emp_code1,
+                                         Employee.reviewer_code == reviewer_code1).order_by("id desc").first()
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    #return str(BASE_DIR)
+    # return str(BASE_DIR)
 
-    return render_template('finaldocument.html', the_document=the_document,the_final_document=the_final_document, base_dir=BASE_DIR)
+    return render_template('finaldocument.html', the_document=the_document, the_final_document=the_final_document,
+                           base_dir=BASE_DIR)
+
+
+@app.route("/save_final", methods=['POST'])
+def save_finaldata():
+    emp_code = request.form['emp_code1']
+    reviewer_code = request.form['reviewer_code1'].strip()
+    #    the_document = Employee.query.filter(Employee.emp_code==emp_code, Employee.reviewer_code==reviewer_code)
+    #    emp_name = the_document.emp_name
+    the_document = db.session.execute(
+        """SELECT emp_name from employee_form WHERE reviewer_code='{}' """.format(reviewer_code)).first()
+
+    emp_name = the_document[0]
+    signature1 = save_signature(request.form.get('signature1'), emp_name, 'signature1')
+
+    db.session.execute("""
+                UPDATE employee_form SET signaturepath1= signaturepath1 WHERE emp_code= emp_code
+                """, {'signaturepath1': signature1, 'emp_code': emp_code})
+    db.session.commit()
+
+    the_empdocument = Employee.query.filter(Employee.emp_code == emp_code).order_by("id desc").first()
+    the_document = Manager.query.filter(Manager.emp_code1 == emp_code).order_by("id desc").first()
+
+    file_name = utils.save_document_as_docx(
+        emp_name=the_empdocument.emp_name,
+        emp_code=the_empdocument.emp_code,
+        emp_email=the_empdocument.emp_email,
+        job_function=the_empdocument.job_function,
+        date=the_empdocument.date
+
+    )
+    utils.send_document_as_mail(emp_name=the_empdocument.emp_name, file_name=file_name)
+
+    # return render_template('employee.html', the_empdocument=the_empdocument,the_document= the_document, base_dir=BASE_DIR)
+    return redirect('/thankyou')
