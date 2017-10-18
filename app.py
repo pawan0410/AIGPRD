@@ -295,10 +295,58 @@ def save_finaldata():
         emp_code=the_empdocument.emp_code,
         emp_email=the_empdocument.emp_email,
         job_function=the_empdocument.job_function,
-        date=the_empdocument.date
+        date=the_empdocument.date,
+        reviewer_name=the_empdocument.reviewer_name,
+        reviewer_code=the_empdocument.reviewer_code,
+
+
+        self_assessment1_comment1=the_empdocument.self_assessment1_comment1,
+        self_assessment1=the_empdocument.self_assessment1,
+        manager_assessment1=the_document.manager_assessment1,
+        manager_assessment1_comment1=the_document.manager_assessment1_comment1,
+        total_score1=the_document.total_score1,
+        achieved_score1=the_document.achieved_score1,
+
+        self_assessment2_comment2=the_empdocument.self_assessment2_comment2,
+        self_assessment2=the_empdocument.self_assessment2,
+        manager_assessment2=the_document.manager_assessment2,
+        manager_assessment2_comment2=the_document.manager_assessment2_comment2,
+        total_score2=the_document.total_score2,
+        achieved_score2=the_document.achieved_score2,
+
+        self_assessment3_comment3=the_empdocument.self_assessment3_comment3,
+        self_assessment3=the_empdocument.self_assessment3,
+        manager_assessment3=the_document.manager_assessment3,
+        manager_assessment3_comment3=the_document.manager_assessment3_comment3,
+        total_score3=the_document.total_score3,
+        achieved_score3=the_document.achieved_score3,
+
+        self_assessment4_comment4=the_empdocument.self_assessment4_comment4,
+        self_assessment4=the_empdocument.self_assessment4,
+        manager_assessment4=the_document.manager_assessment4,
+        manager_assessment4_comment4=the_document.manager_assessment4_comment4,
+        total_score4=the_document.total_score4,
+        achieved_score4=the_document.achieved_score4,
+
+        self_assessment5_comment5=the_empdocument.self_assessment5_comment5,
+        self_assessment5=the_empdocument.self_assessment5,
+        manager_assessment5=the_document.manager_assessment5,
+        manager_assessment5_comment5=the_document.manager_assessment5_comment5,
+        total_score5=the_document.total_score5,
+        achieved_score5=the_document.achieved_score5,
+
+        self_assessment6_comment6=the_empdocument.self_assessment6_comment6,
+        self_assessment6=the_empdocument.self_assessment6,
+        manager_assessment6=the_document.manager_assessment6,
+        manager_assessment6_comment6=the_document.manager_assessment6_comment6,
+        total_score6=the_document.total_score6,
+        achieved_score6=the_document.achieved_score6,
+
+        signature1=the_empdocument.signaturepath1,
+        signature=the_document.signaturepath,
 
     )
     utils.send_document_as_mail(emp_name=the_empdocument.emp_name, file_name=file_name)
 
     # return render_template('employee.html', the_empdocument=the_empdocument,the_document= the_document, base_dir=BASE_DIR)
-    return redirect('/thankyou')
+    return redirect('/success')
