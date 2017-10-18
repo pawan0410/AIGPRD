@@ -623,6 +623,9 @@
             achieved_score6 = document.querySelector('[name=achieved_score6]').value;
 
             rev_email1 = document.querySelector('[name=rev_email1]').value;
+	      var canvas = document.getElementById("newSignature");
+			var signature = canvas.toDataURL("image/png");
+document.getElementById('signature').value = signature;
 
 
 
