@@ -295,10 +295,17 @@ def save_finaldata():
         emp_code=the_empdocument.emp_code,
         emp_email=the_empdocument.emp_email,
         job_function=the_empdocument.job_function,
-        date=the_empdocument.date
+        date=the_empdocument.date,
+        self_assessment1_comment1=the_empdocument.self_assessment1_comment1,
+        self_assessment1=the_empdocument.self_assessment1,
+        manager_assessment1=the_document.manager_assessment1,
+        manager_assessment1_comment1=the_document.manager_assessment1_comment1,
+        total_score1=the_document.total_score1,
+        achieved_score1=the_document.achieved_score1,
+
 
     )
     utils.send_document_as_mail(emp_name=the_empdocument.emp_name, file_name=file_name)
 
     # return render_template('employee.html', the_empdocument=the_empdocument,the_document= the_document, base_dir=BASE_DIR)
-    return redirect('/thankyou')
+    return redirect('/success')

@@ -76,7 +76,7 @@ def save_document_as_docx(**kwargs):
 
     table = document.add_table(rows=1, cols=5)
     hdr_cells = table.rows[0].cells
-    hdr_cells[0].text = 'Employee Information'
+    # hdr_cells[0].text = 'Employee Information'
 
     row_cells = table.add_row().cells
     row_cells[0].text = 'Employee Name :'
@@ -108,29 +108,30 @@ def save_document_as_docx(**kwargs):
 
     row_cells = table.add_row().cells
     row_cells[0].text = 'Date of Review :'
-    row_cells[1].text = kwargs['date']
+    row_cells[1].text = kwargs['date'].strftime('%d-%m-%Y')
     row_cells[2].text = 'Unacceptable'
     row_cells[3].text = 'Below 50'
     row_cells[4].text = 'T'
 
 
-    # table = document.add_table(rows=1, cols=6)
-    #
-    # hdr_cells = table.rows[0].cells
-    # hdr_cells[0].text = 'Performance Evaluation'
-    # hdr_cells[1].text = 'Excellent'
-    # hdr_cells[2].text = 'Good'
-    # hdr_cells[3].text = 'Fair'
-    # hdr_cells[4].text = 'Poor'
-    # hdr_cells[5].text = 'Comments'
-    #
-    # row_cells = table.add_row().cells
-    # row_cells[0].text = 'Job Knowledge'
-    # row_cells[1].text =  'Excellent' if kwargs['job_Knowledge'] == 'Excellent' else 'N/A'
-    # row_cells[2].text = 'Good' if kwargs['job_Knowledge'] == 'Good' else 'N/A'
-    # row_cells[3].text = 'Fair' if kwargs['job_Knowledge'] == 'Fair' else 'N/A'
-    # row_cells[4].text = 'Poor' if kwargs['job_Knowledge'] == 'Poor' else 'N/A'
-    # row_cells[5].text = kwargs['job_Knowledge_comments']
+    table = document.add_table(rows=1, cols=6)
+
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = 'Work is performed accurately & neatly./' \
+                        'Work is consistent, thorough and complete.'
+    hdr_cells[1].text = 'Self Assessment'
+    hdr_cells[2].text = 'Manager Assessment'
+    hdr_cells[3].text = 'Comments'
+    hdr_cells[4].text = 'Total Score'
+    hdr_cells[5].text = 'Achieved Score'
+
+    row_cells = table.add_row().cells
+    row_cells[0].text = kwargs['self_assessment1_comment1']
+    row_cells[1].text = kwargs['self_assessment1']
+    row_cells[2].text = kwargs['manager_assessment1']
+    row_cells[3].text = kwargs['manager_assessment1_comment1']
+    row_cells[4].text = kwargs['total_score1']
+    row_cells[5].text = kwargs['achieved_score1']
     #
     # row_cells = table.add_row().cells
     # row_cells[0].text = 'Productivity'
@@ -289,7 +290,7 @@ def save_document_as_docx(**kwargs):
 
 
     file_name_final = '%s_%s.docx' % (kwargs['emp_name'],kwargs['emp_code'])
-    document.save('static/docs/' + file_name_final)
+    document.save('static/uploads/' + file_name_final)
     return file_name_final
 
 
@@ -297,11 +298,11 @@ def send_document_as_mail(**kwargs):
     subject = 'PRD Form - {}'.format(kwargs['emp_name'])
 
     msg = Message(subject, sender='aigbusiness@aigbusiness.com', recipients=[
-        'pkaur@aigbusiness.com'
+        'pawanpreetpandher0@gmail.com'
     ])
 
     msg.html = """Please find the attached form."""
-    with current_app.open_resource('static/docs/' + kwargs['file_name']) as fp:
+    with current_app.open_resource('static/uploads/' + kwargs['file_name']) as fp:
         msg.attach(
             filename=kwargs['file_name'],
             data=fp.read(),
