@@ -28,8 +28,161 @@
         }
     </style>
 
+
+  <style>
+
+
+
+
+
+
+        body{
+            line-height: 1.5em;
+            width: 96%;
+            margin: 0 auto;
+        }
+        .signature_area table{
+            height:120px;
+        }
+        p{
+            text-align:justify;
+        }
+
+
+
+		.main-wrap{
+			width: 1000px;
+			margin: 0 auto;
+			background-color: #f7fafc;
+			padding: 10px;
+			border: solid 1px #dbeaf2;
+		}
+		h1{
+
+			font-size: 25px;
+			color: #0d374c;
+			text-align: center;
+			background-color: #dbeaf2;
+			border-radius:4px;
+			padding:10px 7px;
+			margin: 0px;
+			;
+		}
+
+		h2{
+
+			font-size: 20px;
+			color: #0e5478;
+			background: #EAF0F3;
+			border: solid 1px #D7E4EC;
+			padding:10px 7px;
+			margin: 0px;
+			text-align: left;
+		}
+
+		p{
+			  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 13px;
+			line-height: 22px;
+
+		}
+		li{
+			  font-family:"Georgia",  Arial, "sans-serif"
+			line-height: 22px;
+			color: #0e5478;
+		}
+
+		input[type='text']
+			{
+			border: solid 1px #aed3e6;
+				padding: 4px;
+		}
+
+
+		.signature_area{
+			background-color: #dbeaf2;
+			padding: 10px;
+			border-radius:6px;
+
+		}
+
+		.box-bg{
+				background-color: #dbeaf2;
+			padding: 10px;
+			border-radius:6px;
+			width: 100%;
+
+		}
+
+		.button {
+		background-color: #08a6f8;
+		border-radius:6px;
+		border: none;
+		color: white;
+		padding: 5px 25px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+
+		cursor: pointer;
+		float: right;
+}
+
+
+	  table{
+
+		  border-collapse: collapse;
+
+	  }
+
+	  tr th{
+
+		  background: #F3F3F3;
+		  border: solid 1px #B3B0B0;
+		 color: #4E4D4D;
+		  width: 100%;
+		  border-collapse: collapse;
+			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 13px;
+		   line-height: 1.4;
+		  font: normal;
+		  text-align: left;
+
+	  }
+
+	  tr th small{
+
+		  font-size: 12px;
+		  text-align: left;
+	  }
+
+	  td{
+
+		   border: solid 1px #E5E8E9;
+		    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 14px;
+		   line-height: 1.4;
+		  text-align: left;
+
+
+	  }
+
+	  .footer_buttom{
+
+		  background: #EAF0F3;
+
+		  padding: 10px;
+	  }
+
+
+    </style>
+
+
+
 </head>
 <body onload="getLocation()">
+<div class="main-wrap" >
 <form method="post" action="/employee" id="frm">
     <input type="hidden" id="location" name="location">
     <input type="hidden" id="signature" name="signature">
@@ -38,7 +191,7 @@
 
 
     <div class="employee">
-    <table cellspacing="3" cellpadding="3">
+    <table width="100%" cellspacing="3" cellpadding="3">
         <thead>
         </thead>
         <tbody>
@@ -47,6 +200,11 @@
             <td>
                 <input type="text" name="emp_name" id="emp_name">
             </td>
+
+            <td>Outstanding</td>
+            <td>91-100</td>
+            <td>S</td>
+
         </tr>
 
         <tr>
@@ -54,6 +212,10 @@
             <td>
                 <input type="text" name="emp_email" id="emp_email">
             </td>
+
+            <td>Exceeds Expectations</td>
+            <td>81-90</td>
+            <td>M</td>
         </tr>
 
         <tr>
@@ -61,6 +223,11 @@
             <td>
                 <input type="text" name="emp_code" id="emp_code">
             </td>
+
+            <td>Meets Expectations</td>
+            <td>71-80</td>
+            <td>A</td>
+
         </tr>
 
         <tr>
@@ -68,13 +235,23 @@
             <td>
                 <input type="text" name="job_function" id="job_function">
             </td>
+
+             <td> Improvement Needed</td>
+            <td>51-70</td>
+            <td>R</td>
+
         </tr>
 
          <tr>
          <td> Date of Review :</td>
             <td>
-                <input type="date" name="date" id="date">
+                <input style="width: 175px;" type="date" name="date" id="date">
             </td>
+
+              <td> Unacceptable</td>
+            <td>Below 50</td>
+            <td>T</td>
+
         </tr>
 
          <tr>
@@ -97,7 +274,7 @@
     </table>
     </div>
 
-    <div class="standards">
+   <!-- <div class="standards">
     <table cellspacing="3" cellpadding="3">
         <thead>
         </thead>
@@ -130,7 +307,7 @@
         </tbody>
 
     </table>
-    </div>
+    </div>-->
 
     <h2>Quality of Work (Effective)</h2>
     <div class="work_quality">
@@ -138,20 +315,21 @@
         <thead>
 
         <tr>
-            <td><small>Work is performed accurately & neatly. Work is consistent, thorough and complete.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th width="270"><small>Work is performed accurately & neatly.<br>
+ Work is consistent, thorough and complete.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment1_comment1" id="self_assessment1_comment1"
-                       placeholder="Write self-assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment1_comment1" id="self_assessment1_comment1"
+                       placeholder="Write self-assessment comments"></textarea></td>
             <td><input type="text" name="self_assessment1" id="self_assessment1"></td>
             <td></td>
             <td></td>
@@ -172,20 +350,20 @@
         <thead>
 
         <tr>
-            <td><small>Amount of work performed on daily basis is appropriate for job function.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+             <th width="270"><small>Amount of work performed on daily basis is appropriate for job function.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment2_comment2" id="self_assessment2_comment2"
-                       placeholder="Write assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment2_comment2" id="self_assessment2_comment2"
+                       placeholder="Write assessment comments"></textarea></td>
             <td><input type="text" name="self_assessment2" id="self_assessment2"></td>
             <td></td>
             <td></td>
@@ -206,21 +384,21 @@
         <thead>
 
         <tr>
-            <td><small>Understands the job requirement and has specific content knowledge
-                where appropriate, completes work within timelines & is efficient for the work</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+             <th width="270"><small>Understands the job requirement and has specific content knowledge
+                where appropriate, completes work within timelines & is efficient for the work</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment3_comment3" id="self_assessment3_comment3"
-                       placeholder="Write assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment3_comment3" id="self_assessment3_comment3"
+                       placeholder="Write assessment comments"></textarea> </td>
             <td><input type="text" name="self_assessment3" id="self_assessment3"></td>
             <td></td>
             <td></td>
@@ -242,20 +420,20 @@
         <thead>
 
         <tr>
-            <td><small>Is punctual and do not take uninformed leaves</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+             <th width="270"><small>Is punctual and do not take uninformed leaves</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment4_comment4" id="self_assessment4_comment4"
-                       placeholder="Write assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment4_comment4" id="self_assessment4_comment4"
+                       placeholder="Write assessment comments"></textarea> </td>
             <td><input type="text" name="self_assessment4" id="self_assessment4"></td>
             <td></td>
             <td></td>
@@ -276,20 +454,20 @@
         <thead>
 
         <tr>
-            <td><small>Behaviour with colleagues, Subordinates, Supervisor</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+             <th width="270"><small>Behaviour with colleagues, Subordinates, Supervisor</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment5_comment5" id="self_assessment5_comment5"
-                       placeholder="Write assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment5_comment5" id="self_assessment5_comment5"
+                       placeholder="Write assessment comments"></textarea></td>
             <td><input type="text" name="self_assessment5" id="self_assessment5"></td>
             <td></td>
             <td></td>
@@ -310,21 +488,21 @@
         <thead>
 
         <tr>
-            <td><small>Is employee always keen on taking intitiatives  to follow
-                the mission and values of the company.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+             <th width="270"><small>Is employee always keen on taking intitiatives  to follow
+                the mission and values of the company.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
         <tr>
 
-            <td><input type="text" name="self_assessment6_comment6" id="self_assessment6_comment6"
-                       placeholder="Write assessment comments"></td>
+            <td><textarea rows="2" cols="60" name="self_assessment6_comment6" id="self_assessment6_comment6"
+                       placeholder="Write assessment comments"></textarea></td>
             <td><input type="text" name="self_assessment6" id="self_assessment6"></td>
             <td></td>
             <td></td>
@@ -340,19 +518,22 @@
     </div>
 
 
-<div class="footer_button">
+<div class="footer_buttom">
     <table cellspacing="3" cellpadding="3">
-        <tbody>
-        <tr>
-            <td>Send form to :</td>
-            <td><input type="text" name="rev_email" id="rev_email" placeholder="Enter Email Id"> </td>
+
+        <tr style="border: none;">
+            <td style="border: none;">Send form to :</td>
+            <td style="border: none;"><input type="text" name="rev_email" id="rev_email" placeholder="Enter Email Id"> </td>
+            <td style="border: none;" width="480"></td>
+
+            <td style="border: none;"><button class="button" type="submit" id="submit">Submit</button></div></td>
         </tr>
-        </tbody>
+
     </table>
-    <button type="submit" id="submit">Submit</button></div>
+
 
 </form>
-
+</div>
 <script>
         function showPosition(position) {
             //x.innerHTML = "Latitude: " + position.coords.latitude +
@@ -384,6 +565,7 @@
 			var date = document.querySelector('[name=date]').value;
             job_function = document.querySelector('[name=job_function]').value;
 			var emp_email = document.querySelector('[name=emp_email]').value;
+			var reviewer_email = document.querySelector('[name=reviewer_email]').value;
 
 			var emp_name = document.querySelector('[name=emp_name]').value;
 			var emp_code = document.querySelector('[name=emp_code]').value;
@@ -413,7 +595,7 @@
 
 
 			if ( (date == '') ||
-			  (job_function == '') || (emp_email == '')||(emp_code == '') ||(reviewer_code == '')
+			  (job_function == '') || (emp_email == '')||(reviewer_email == '') ||(emp_code == '') ||(reviewer_code == '')
 			 || (emp_name == '') || (reviewer_name == '') || (self_assessment1 == '') || (self_assessment2 == '') || (self_assessment3 == '')
 			 || (self_assessment4 == '') || (self_assessment5 == '') || (self_assessment6 == '') || (self_assessment1_comment1 == '')
 			 || (self_assessment2_comment2 == '')

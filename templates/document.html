@@ -7,6 +7,8 @@
 
     <script src="/static/signature.js"></script>
 
+
+
     <style>
         body{
             line-height: 1.5em;
@@ -26,8 +28,162 @@
         }
     </style>
 
+
+    <style>
+
+
+        body{
+            line-height: 1.5em;
+            width: 96%;
+            margin: 0 auto;
+        }
+        .signature_area table{
+            height:120px;
+        }
+        p{
+            text-align:justify;
+        }
+
+
+
+		.main-wrap{
+			width: 1000px;
+			margin: 0 auto;
+			background-color: #f7fafc;
+			padding: 10px;
+			border: solid 1px #dbeaf2;
+		}
+		h1{
+
+			font-size: 25px;
+			color: #0d374c;
+			text-align: center;
+			background-color: #dbeaf2;
+			border-radius:4px;
+			padding:10px 7px;
+			margin: 0px;
+			;
+		}
+
+		h2{
+
+			font-size: 20px;
+			color: #0e5478;
+			background: #EAF0F3;
+			border: solid 1px #D7E4EC;
+			padding:10px 7px;
+			margin: 0px;
+			text-align: left;
+		}
+
+		p{
+			  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 13px;
+			line-height: 22px;
+
+		}
+		li{
+			  font-family:"Georgia",  Arial, "sans-serif"
+			line-height: 22px;
+			color: #0e5478;
+		}
+
+		input[type='text']
+			{
+			border: solid 1px #aed3e6;
+				padding: 4px;
+		}
+
+
+		.signature_area{
+
+			padding: 10px;
+			border-radius:6px;
+
+		}
+
+		.box-bg{
+				background-color: #dbeaf2;
+			padding: 10px;
+			border-radius:6px;
+			width: 100%;
+
+		}
+
+		.button {
+		background-color: #08a6f8;
+		border-radius:6px;
+		border: none;
+		color: white;
+		padding: 5px 25px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+
+		cursor: pointer;
+		float: right;
+}
+
+
+	  table{
+
+		  border-collapse: collapse;
+
+	  }
+
+	  tr th{
+
+		  background: #F3F3F3;
+		  border: solid 1px #B3B0B0;
+		 color: #4E4D4D;
+		  width: 100%;
+		  border-collapse: collapse;
+			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 13px;
+		   line-height: 1.4;
+		  font: normal;
+		  text-align: left;
+
+	  }
+
+	  tr th small{
+
+		  font-size: 12px;
+		  text-align: left;
+	  }
+
+	  td{
+
+		   border: solid 1px #E5E8E9;
+		    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+		   font-size: 14px;
+		   line-height: 1.4;
+		  text-align: left;
+
+
+	  }
+
+	  .footer_buttom{
+
+		  background: #EAF0F3;
+
+		  padding: 10px;
+	  }
+
+
+		input[type=text] {
+    width: 100px;
+
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+    </style>
+
 </head>
 <body onload="getLocation()">
+<div class="main-wrap" >
 <form method="post" action="/manager" id="frm">
     <input type="hidden" id="location" name="location">
 
@@ -36,7 +192,7 @@
 
 
     <div class="employee">
-    <table cellspacing="3" cellpadding="3">
+    <table width="100%" cellspacing="3" cellpadding="3">
         <thead>
         </thead>
         <tbody>
@@ -45,6 +201,11 @@
             <td>
                 {{the_document.emp_name}}
             </td>
+
+             <td>Outstanding</td>
+            <td>91-100</td>
+            <td>S</td>
+
         </tr>
 
         <tr>
@@ -52,13 +213,21 @@
             <td>
                 {{the_document.emp_email}}
             </td>
+
+            <td>Exceeds Expectations</td>
+            <td>81-90</td>
+            <td>M</td>
         </tr>
 
         <tr>
          <td> Enter Employee Code :</td>
             <td>
-                <input type="text" name="emp_code1" id="emp_code1">
+                <input style="width: 200px;" type="text" name="emp_code1" id="emp_code1">
             </td>
+
+            <td>Meets Expectations</td>
+            <td>71-80</td>
+            <td>A</td>
         </tr>
 
         <tr>
@@ -66,6 +235,10 @@
             <td>
                 {{the_document.job_function}}
             </td>
+
+            <td> Improvement Needed</td>
+            <td>51-70</td>
+            <td>R</td>
         </tr>
 
          <tr>
@@ -78,14 +251,18 @@
          <tr>
          <td> Reviewed By :</td>
             <td>
-                <input type="text" name="reviewer_name1" id="reviewer_name">
+                <input style="width: 200px;" name="reviewer_name1" id="reviewer_name1">
             </td>
+
+             <td> Unacceptable</td>
+            <td>Below 50</td>
+            <td>T</td>
         </tr>
 
         <tr>
          <td> Reviewer's Employee Code :</td>
             <td>
-                <input type="text" name="reviewer_code1" id="reviewer_code1">
+                <input style="width: 200px;" name="reviewer_code1" id="reviewer_code1">
             </td>
         </tr>
 
@@ -97,7 +274,7 @@
     </table>
     </div>
 
-    <div class="standards">
+   <!-- <div class="standards">
     <table cellspacing="3" cellpadding="3">
         <thead>
         </thead>
@@ -130,20 +307,20 @@
         </tbody>
 
     </table>
-    </div>
+    </div>-->
 
     <h2>Quality of Work (Effective)</h2>
     <div class="work_quality">
     <table cellspacing="3" cellpadding="3">
         <thead>
 
-        <tr>
-            <td><small>Work is performed accurately & neatly. Work is consistent, thorough and complete.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+        <tr >
+            <th style="width: 320px;"><small>Work is performed accurately & neatly. Work is consistent, thorough and complete.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
@@ -153,9 +330,11 @@
             <td>{{the_document.self_assessment1_comment1}}</td>
             <td>{{the_document.self_assessment1}}</td>
             <td><input type="text" name="manager_assessment1" id="manager_assessment1"></td>
-            <td><input type="text" name="manager_assessment1_comment1" id="manager_assessment1_comment1"></td>
+            <td><textarea rows="2" cols="60" name="manager_assessment1_comment1" id="manager_assessment1_comment1"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score1" id="total_score1"></td>
             <td><input type="text" name="achieved_score1" id="achieved_score1"></td>
+
 
         </tr>
 
@@ -170,12 +349,12 @@
         <thead>
 
         <tr>
-            <td><small>Amount of work performed on daily basis is appropriate for job function.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th style="width: 320px;"><small>Amount of work performed on daily basis is appropriate for job function.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
@@ -185,7 +364,8 @@
             <td>{{the_document.self_assessment2_comment2}}</td>
             <td>{{the_document.self_assessment2}}</td>
             <td><input type="text" name="manager_assessment2" id="manager_assessment2"></td>
-            <td><input type="text" name="manager_assessment2_comment2" id="manager_assessment2_comment2"></td>
+            <td><textarea rows="2" cols="60" name="manager_assessment2_comment2" id="manager_assessment2_comment2"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score2" id="total_score2"></td>
             <td><input type="text" name="achieved_score2" id="achieved_score2"></td>
 
@@ -203,13 +383,13 @@
         <thead>
 
         <tr>
-            <td><small>Understands the job requirement and has specific content knowledge
-                where appropriate, completes work within timelines & is efficient for the work</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th style="width: 320px;"><small>Understands the job requirement and has specific content knowledge
+                where appropriate, completes work within timelines & is efficient for the work</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
@@ -219,7 +399,8 @@
             <td>{{the_document.self_assessment3_comment3}}</td>
             <td>{{the_document.self_assessment3}}</td>
             <td><input type="text" name="manager_assessment3" id="manager_assessment3"></td>
-            <td><input type="text" name="manager_assessment3_comment3" id="manager_assessment3_comment3"></td>
+            <td><textarea rows="2" cols="60" name="manager_assessment3_comment3" id="manager_assessment3_comment3"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score3" id="total_score3"></td>
             <td><input type="text" name="achieved_score3" id="achieved_score3"></td>
 
@@ -234,27 +415,27 @@
 
     <h2>Attendance & Punctuality</h2>
     <div class="attendance">
-    <table cellspacing="3" cellpadding="3">
+    <table width="100%" cellspacing="3" cellpadding="3">
         <thead>
 
         <tr>
-            <td><small>Is punctual and do not take uninformed leaves</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th style="width: 320px;"><small>Is punctual and do not take uninformed leaves</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
         <tbody>
-
         <tr>
 
             <td>{{the_document.self_assessment4_comment4}}</td>
             <td>{{the_document.self_assessment4}}</td>
             <td><input type="text" name="manager_assessment4" id="manager_assessment4"></td>
-            <td><input type="text" name="manager_assessment4_comment4" id="manager_assessment4_comment4"></td>
+            <td><textarea rows="2" cols="60" name="manager_assessment4_comment4" id="manager_assessment4_comment4"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score4" id="total_score4"></td>
             <td><input type="text" name="achieved_score4" id="achieved_score4"></td>
 
@@ -268,16 +449,16 @@
 
     <h2>Behaviour</h2>
     <div class="behaviour">
-    <table cellspacing="3" cellpadding="3">
+    <table width="100%" cellspacing="3" cellpadding="3">
         <thead>
 
         <tr>
-            <td><small>Behaviour with colleagues, Subordinates, Supervisor</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th style="width: 320px;"><small>Behaviour with colleagues, Subordinates, Supervisor</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
@@ -287,7 +468,8 @@
             <td>{{the_document.self_assessment5_comment5}}</td>
             <td>{{the_document.self_assessment5}}</td>
             <td><input type="text" name="manager_assessment5" id="manager_assessment5"></td>
-            <td><input type="text" name="manager_assessment5_comment5" id="manager_assessment5_comment5"></td>
+            <td><textarea rows="2" cols="60" name="manager_assessment5_comment5" id="manager_assessment5_comment5"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score5" id="total_score5"></td>
             <td><input type="text" name="achieved_score5" id="achieved_score5"></td>
 
@@ -305,13 +487,13 @@
         <thead>
 
         <tr>
-            <td><small>Is employee always keen on taking intitiatives  to follow
-                the mission and values of the company.</small></td>
-            <td>Self Assessment</td>
-            <td>Manager Assessment</td>
-            <td>Comments</td>
-            <td>Total Score</td>
-            <td>Achieved Score</td>
+            <th style="width: 320px;"><small>Is employee always keen on taking intitiatives  to follow
+                the mission and values of the company.</small></th>
+            <th>Self Assessment</th>
+            <th>Manager Assessment</th>
+            <th>Comments</th>
+            <th>Total Score</th>
+            <th>Achieved Score</th>
         </tr>
 
         </thead>
@@ -321,7 +503,8 @@
             <td>{{the_document.self_assessment6_comment6}}</td>
             <td>{{the_document.self_assessment6}}</td>
             <td><input type="text" name="manager_assessment6" id="manager_assessment6"></td>
-            <td><input type="text" name="manager_assessment6_comment6" id="manager_assessment6_comment6"></td>
+           <td><textarea rows="2" cols="60" name="manager_assessment6_comment6" id="manager_assessment6_comment6"
+                       placeholder="write comments"></textarea></td>
             <td><input type="text" name="total_score6" id="total_score6"></td>
             <td><input type="text" name="achieved_score6" id="achieved_score6"></td>
 
@@ -334,6 +517,8 @@
     </div>
 
 
+
+    <input type="hidden" id="signature" name="signature">
     <div class="signature_area">
     <table cellspacing="3" cellpadding="3">
 
@@ -348,7 +533,6 @@
 				zkSignature.capture();
 
                 </script>
-		<input type="hidden" name="signature" id="signature" />
             </td>
             <td>
             <button name="button" type="button" onclick="zkSignature.clear()">Clear</button>
@@ -360,19 +544,22 @@
 </div>
 
 
-<div class="footer_button">
+
+<div class="footer_buttom">
     <table cellspacing="3" cellpadding="3">
-        <tbody>
+
         <tr>
             <td>Send form to :</td>
-            <td><input type="text" name="rev_email1" id="rev_email1" placeholder="Enter Email Id"> </td>
+            <td><input style="width: 200px;" type="text" name="rev_email1" id="rev_email1" placeholder="Enter Email Id"> </td>
+        		<td style="border: none;" width="480"></td>
+              <td style="border: none;"><button class="button" type="submit" id="submit">Submit</button></td>
         </tr>
-        </tbody>
+
     </table>
-    <button type="submit" id="submit">Submit</button></div>
+
 
 </form>
-
+	</div>
 <script>
         function showPosition(position) {
             //x.innerHTML = "Latitude: " + position.coords.latitude +
@@ -400,9 +587,6 @@
             }
         }
         function save(){
-
-            var canvas = document.getElementById("newSignature");
-			var signature = canvas.toDataURL("image/png");
 
 			var emp_code1 = document.querySelector('[name=emp_code1]').value;
             var reviewer_name1 = document.querySelector('[name=reviewer_name1]').value;
@@ -440,14 +624,6 @@
 
             rev_email1 = document.querySelector('[name=rev_email1]').value;
 
-            document.getElementById('signature').value = signature;
-
-			if ( zkSignature.isEmpty()
-			 ){
-			        alert('Please sign all the fields');
-			       return false;
-			};
-
 
 
 
@@ -460,7 +636,7 @@
 			 || (manager_assessment4 == '') || (manager_assessment5 == '')
 			 || (manager_assessment6 == '') || (manager_assessment1_comment1 == '') || (manager_assessment2_comment2 == '')
 			 || (manager_assessment3_comment3 == '') || (manager_assessment4_comment4 == '')
-			 || (manager_assessment5_comment5 == '') || (self_assessment6_comment6 == '')
+			 || (manager_assessment5_comment5 == '') || (manager_assessment6_comment6 == '')
 			 || (total_score1 == '') || (total_score2 == '') || (total_score3 == '')
 			 || (total_score4 == '') || (total_score5 == '') || (total_score6 == '') || (achieved_score1 == '') || (achieved_score2 == '')
 			 || (achieved_score3 == '') || (achieved_score4 == '') || (achieved_score5 == '') || (achieved_score6 == '')

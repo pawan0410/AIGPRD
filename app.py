@@ -283,9 +283,14 @@ def save_finaldata():
     signature1 = save_signature(request.form.get('signature1'), emp_name, 'signature1')
 
     db.session.execute("""
-                UPDATE employee_form SET signaturepath1= signaturepath1 WHERE emp_code= emp_code
-                """, {'signaturepath1': signature1, 'emp_code': emp_code})
+                   UPDATE employee_form SET signaturepath1='{}' WHERE emp_code='{}'
+                   """.format(signature1, emp_code))
     db.session.commit()
+
+    # db.session.execute("""
+    #             UPDATE employee_form SET signaturepath1= signaturepath1 WHERE emp_code= emp_code
+    #             """, {'signaturepath1': signature1, 'emp_code': emp_code})
+    # db.session.commit()
 
     the_empdocument = Employee.query.filter(Employee.emp_code == emp_code).order_by("id desc").first()
     the_document = Manager.query.filter(Manager.emp_code1 == emp_code).order_by("id desc").first()
