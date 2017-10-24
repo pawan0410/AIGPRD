@@ -270,7 +270,7 @@ def final(emp_code1, reviewer_code1):
                            base_dir=BASE_DIR)
 
 
-@app.route("/save_final/<string:emp_code>/<string:reviewer_code>", methods=['POST'])
+@app.route("/save_final", methods=['POST'])
 def save_finaldata(emp_code,reviewer_code):
     # emp_code = request.form['emp_code1']
     # reviewer_code = request.form['reviewer_code1'].strip()
