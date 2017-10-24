@@ -191,7 +191,8 @@
 
 <form method="post" action="/save_final" id="frm2">
     <input type="hidden" id="location" name="location">
-
+<input type="hidden" name="emp_code1" id="emp_code1" value="{{the_document.emp_code}}" />
+<input type="hidden" name="reviewer_code1" id="reviewer_code1" value="{{the_final_document.reviewer_code1}}" />
 
     <h2>Employee Information</h2>
 
@@ -560,7 +561,7 @@
                 </script>
             </td>
             <td>
-            <button name="button" type="button" onclick="zkSignatureOne.clear()">Clear</button>
+            <button type="button" onclick="zkSignature.clear()">Clear</button>
             </td>
 
 
@@ -616,7 +617,7 @@
         }
         function save(){
 
-            var canvas1 = document.getElementById("newSignature1");
+            var canvas1 = document.getElementById("newSignature");
 			var signature1 = canvas1.toDataURL("image/png");
 
 
