@@ -189,7 +189,7 @@
 <body onload="getLocation()">
 <div class="main-wrap">
 
-<form method="post" action="/manager" id="frm1">
+<form method="post" action="/save_final" id="frm2">
     <input type="hidden" id="location" name="location">
 
 
@@ -225,16 +225,10 @@
         </tr>
 
         <tr>
-
+         <td> Enter Employee Code :</td>
             <td>
-                Employee Code:
+               {{the_document.emp_code}}
             </td>
-            <td>{{the_document.emp_code}}</td>
-
-         <!--<td> Enter Employee Code :</td>-->
-            <!--<td>-->
-               <!--<input style="width: 200px;" type="text" name="emp_code1" id="emp_code1">-->
-            <!--</td>-->
 
             <td>Meets Expectations</td>
             <td>71-80</td>
@@ -557,16 +551,16 @@
          <tr>
             <td>Reviewer Signature  :</td>
             <td style="background:#faebd7;">
-                <div id="canvas">
+                <div id="canvas1">
                     Canvas is not supported.
                 </div>
                 <script>
-				zkSignature.capture();
+				zkSignatureOne.capture();
 
                 </script>
             </td>
             <td>
-            <button name="button" type="button" onclick="zkSignature.clear()">Clear</button>
+            <button name="button" type="button" onclick="zkSignatureOne.clear()">Clear</button>
             </td>
 
 
@@ -620,9 +614,9 @@
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
-         function save(){
+        function save(){
 
-            var canvas1 = document.getElementById("newSignature");
+            var canvas1 = document.getElementById("newSignature1");
 			var signature1 = canvas1.toDataURL("image/png");
 
 
@@ -637,7 +631,7 @@
 
 
         }
-         function dosubmit(e){
+        function dosubmit(e){
              if( confirm('By Submitting this form you agree that the information shared by you is correct and up-to-date ? ') ){
                 save();
              }
@@ -646,8 +640,6 @@
         }
        document.getElementById('frm2').addEventListener('submit', dosubmit);
     </script>
-</body>
-</html>
-    </script>
+</div>
 </body>
 </html>
