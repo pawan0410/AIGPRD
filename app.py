@@ -270,12 +270,14 @@ def final(emp_code1, reviewer_code1):
                            base_dir=BASE_DIR)
 
 
-@app.route("/save_final", methods=['POST'])
-def save_finaldata():
-    emp_code = request.form['emp_code1']
-    reviewer_code = request.form['reviewer_code1'].strip()
-    #    the_document = Employee.query.filter(Employee.emp_code==emp_code, Employee.reviewer_code==reviewer_code)
-    #    emp_name = the_document.emp_name
+@app.route("/save_final/<string:emp_code>/<string:reviewer_code>", methods=['POST'])
+def save_finaldata(emp_code,reviewer_code):
+    # emp_code = request.form['emp_code1']
+    # reviewer_code = request.form['reviewer_code1'].strip()
+    the_document = Employee.query.filter(Employee.emp_code==emp_code, Employee.reviewer_code==reviewer_code)
+    emp_code = the_document.emp_code
+    reviewer_code = the_document.reviewer_code
+
     the_document = db.session.execute(
         """SELECT emp_name from employee_form WHERE reviewer_code='{}' """.format(reviewer_code)).first()
 
